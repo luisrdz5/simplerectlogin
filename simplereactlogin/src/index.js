@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import App from './routes/App';
 
-//const history = createBrowserHistory();
+const history = createBrowserHistory();
 
 
 const container = document.getElementById('root');

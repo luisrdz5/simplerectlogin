@@ -1,11 +1,14 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
   mode: 'development', // o 'production' según tu entorno
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -15,6 +18,22 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
+      },
+      {
+        test: /\.css|.styl$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader',
+          {
+            loader: 'stylus-loader',
+            options: {
+              //import: [path.resolve(__dirname, './src/styles/Variables.styl')]
+            },
+          },
+
+        ],
       },
     ],
   },
@@ -29,5 +48,14 @@ module.exports = {
     port: 9000,
     historyApiFallback: true,
     open: false,
+    hot: true, 
   },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: './public/index.html',
+      filename: './index.html'
+    })
+  ],
 };
