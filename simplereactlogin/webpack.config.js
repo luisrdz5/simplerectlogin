@@ -1,7 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 
+
+// Carga las variables de entorno
+dotenv.config();
 
 module.exports = {
   mode: 'development', // o 'production' según tu entorno
@@ -56,6 +61,9 @@ module.exports = {
       inject: true,
       template: './public/index.html',
       filename: './index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_API_BASE_URL': JSON.stringify(process.env.REACT_APP_API_BASE_URL)
     })
   ],
 };

@@ -1,0 +1,77 @@
+@import '../variables.styl'
+
+.dashboard-container
+  display flex
+  justify-content center
+  align-items center
+  height $height-full
+  background-color $background-color
+
+.dashboard-box
+  background-color #fff
+  padding $spacing-large
+  border-radius $border-radius
+  box-shadow $box-shadow
+  width $full-width
+  max-width $max-width-container
+  text-align center
+
+  @media (max-width: $breakpoint-mobile)
+    padding $spacing-mobile-large
+
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop)
+    padding $spacing-tablet-large
+
+h2
+  margin-bottom $spacing-medium
+  font-size $font-size-large
+  color $text-color
+
+  @media (max-width: $breakpoint-mobile)
+    font-size $font-size-mobile-large
+
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop)
+    font-size $font-size-tablet-large
+
+.subtitle
+  margin-bottom $spacing-large
+  font-size $font-size-small
+  color $text-muted-color
+
+.info-group
+  margin-bottom $spacing-medium
+  text-align left
+
+  @media (max-width: $breakpoint-mobile)
+    margin-bottom $spacing-mobile-medium
+
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop)
+    margin-bottom $spacing-tablet-medium
+
+label
+  display block
+  margin-bottom $spacing-small
+  font-weight bold
+  color $text-color
+
+  @media (max-width: $breakpoint-mobile)
+    margin-bottom $spacing-mobile-small
+
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop)
+    margin-bottom $spacing-tablet-small
+
+.info
+  background-color $background-color
+  padding $spacing-small
+  border-radius $border-radius
+  color $text-color
+  font-family $font-family
+
+.json
+  text-align left
+  white-space pre-wrap
+  background-color $background-color
+  border 1px solid $border-color
+  padding $spacing-small
+  border-radius $border-radius
+  color $text-color

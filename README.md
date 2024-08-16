@@ -1,2 +1,2 @@
-# simplerectlogin
+# simplereactlogin
 simple react login
