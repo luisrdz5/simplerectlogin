@@ -8,7 +8,6 @@ import App from './routes/App';
 
 const history = createBrowserHistory();
 
-
 const container = document.getElementById('root');
 const root = createRoot(container); 
 

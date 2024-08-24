@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaGoogle, FaApple } from 'react-icons/fa';
-import '../styles/containers/Login.styl';
+import '../styles/components/Login.styl';
 import { useNavigate } from 'react-router-dom'; 
+import { useAuth } from '../context/AuthContext'; // Importa el hook de AuthContext
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [token, setToken] = useState(null); // Estado para almacenar el token
+  const [user, setUser] = useState(null); // Estado para almacenar el token
   const [message, setMessage] = useState(''); // Estado para almacenar mensajes de éxito o error
   const baseURL = process.env.REACT_APP_API_BASE_URL; // Acceso a la variable de entorno
-  
+  const { login } = useAuth(); // Obtener la función login del contexto
   
   const navigate = useNavigate(); // Crear una instancia de useNavigate
 
@@ -34,14 +37,18 @@ const Login = () => {
 
       const data = await response.json();
       
-      const { token } = data;
+      const { token, user  } = data;
       
       // Guardar el token en el estado
       setToken(token);
+      setUser(user.correo);
+      login(token, user);
 
       // Guardar el token en localStorage
       localStorage.setItem('authToken', token);
-      navigate('/dashboard', { state: { token, email, data } });
+      localStorage.setItem('authUser', user.correo);
+
+      navigate('/dashboard');
       // Mostrar mensaje de éxito
       setMessage('¡Has iniciado sesión exitosamente!');
     } catch (error) {

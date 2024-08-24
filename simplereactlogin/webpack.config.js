@@ -3,10 +3,34 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
+const Dotenv = require('dotenv-webpack');
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+const isTest = process.env.NODE_ENV === 'test';
 
 // Carga las variables de entorno
 dotenv.config();
+
+let plugins = [
+  new MiniCssExtractPlugin(),
+  new HtmlWebpackPlugin({
+    inject: true,
+    template: './public/index.html',
+    filename: './index.html'
+  }),
+];
+
+
+if (isDevelopment) {
+  plugins.push(new Dotenv({ path: './.env.development' }));
+} else {
+  if (isTest){
+      plugins.push(new Dotenv({ path: './.env.test' }));
+  }else{
+      plugins.push(new Dotenv({ path: './.env.production' }));
+  }
+}
+
 
 module.exports = {
   mode: 'development', // o 'production' según tu entorno
@@ -55,15 +79,5 @@ module.exports = {
     open: false,
     hot: true, 
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: './public/index.html',
-      filename: './index.html'
-    }),
-    new webpack.DefinePlugin({
-      'process.env.REACT_APP_API_BASE_URL': JSON.stringify(process.env.REACT_APP_API_BASE_URL)
-    })
-  ],
+  plugins: plugins,
 };

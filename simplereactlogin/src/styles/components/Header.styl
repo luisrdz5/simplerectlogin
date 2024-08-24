@@ -1,0 +1,35 @@
+@import '../variables.styl'
+
+.header
+  display flex
+  justify-content space-between
+  align-items center
+  padding $spacing-large
+  background-color $header-background-color
+  box-shadow $box-shadow
+
+.header-logo img
+  height 40px
+  width auto
+
+.header-user
+  display flex
+  align-items center
+
+.header-user-greeting
+  margin-right $spacing-medium
+  font-size $font-size-medium
+  color $text-color
+
+.header-logout-button
+  padding $spacing-small $spacing-medium
+  font-size $font-size-small
+  color $button-text-color
+  background-color $button-background-color
+  border none
+  border-radius $border-radius
+  cursor pointer
+  transition background-color 0.3s ease
+
+  &:hover
+    background-color $button-hover-background-color

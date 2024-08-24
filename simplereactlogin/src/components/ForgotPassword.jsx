@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/containers/ForgotPassword.styl';
+import '../styles/components/ForgotPassword.styl';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -23,6 +23,7 @@ const ForgotPassword = () => {
       }
 
       setMessage('¡Revisa tu correo para recuperar la contraseña!');
+      setTimeout(() => navigate('/'), 3000); // Redirige a login después de 3 segundos
     } catch (error) {
       setMessage('Error al intentar recuperar la contraseña. Inténtalo nuevamente.');
       console.error('Error en la recuperación de contraseña:', error);

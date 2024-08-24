@@ -1,10 +1,11 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import '../styles/containers/Dashboard.styl';
+import '../styles/components/Dashboard.styl';
+import { useAuth } from '../context/AuthContext';
 
 const Dashboard = () => {
-  const location = useLocation();
-  const { token, email, data } = location.state || {}; // Acceder a los datos pasados
+  //const location = useLocation();
+  const { token, user } = useAuth();
 
   return (
     <div className="dashboard-container">
@@ -17,11 +18,7 @@ const Dashboard = () => {
         </div>
         <div className="info-group">
           <label>Email:</label>
-          <p className="info">{email}</p>
-        </div>
-        <div className="info-group">
-          <label>Datos Completos:</label>
-          <pre className="info json">{JSON.stringify(data, null, 2)}</pre>
+          <p className="info">{user ? user : 'Usuario no disponible'}</p> 
         </div>
       </div>
     </div>

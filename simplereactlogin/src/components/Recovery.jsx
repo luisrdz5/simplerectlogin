@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../styles/containers/Recovery.styl';
+import '../styles/components/Recovery.styl';
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
@@ -27,9 +27,13 @@ const ResetPassword = () => {
           newPassword,
         }),
       });
+      
 
       if (!response.ok) {
-        throw new Error('Error al cambiar la contraseña');
+        const errorData = await response.json(); // Extraer la respuesta del backend
+        console.log(errorData.message)
+        setMessage(errorData.message || 'Error al cambiar la contraseña');
+        return; 
       }
 
       setMessage('¡Tu contraseña ha sido cambiada exitosamente!');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/containers/Register.styl';
+import '../styles/components/Register.styl';
 
 const Register = () => {
   const [email, setEmail] = useState('');
