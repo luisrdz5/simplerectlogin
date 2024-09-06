@@ -33,4 +33,6 @@ src/dist
 .env.test
 
 
-
+public/env.js
+./public/env.js
+simplereactlogin/public/env.js

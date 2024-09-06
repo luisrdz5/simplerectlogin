@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import '../styles/components/ForgotPassword.styl';
+import { useNavigate } from 'react-router-dom'; 
+
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const baseURL = process.env.REACT_APP_API_BASE_URL;
+  const navigate = useNavigate(); // Crear una instancia de useNavigate
 
   const handleForgotPassword = async (event) => {
     event.preventDefault();
