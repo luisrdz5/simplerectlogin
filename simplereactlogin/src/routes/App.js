@@ -4,6 +4,7 @@ import LoginContainer from '../containers/LoginContainer.jsx';
 import DashboardContainer from '../containers/DashboardContainer.jsx';
 import RegisterContainer from '../containers/RegisterContainer.jsx';
 import RecoveryContainer from '../containers/RecoveryContainer.jsx';
+import AuthContainer from '../containers/AuthContainer.jsx';
 import NotFound from '../containers/NotFound.jsx';
 import ForgotPasswordContainer from '../containers/ForgotPasswordContainer.jsx';
 import { AuthProvider } from '../context/AuthContext.jsx'; // Importa el AuthProvider
@@ -17,6 +18,7 @@ const AppRoutes = () => {
       { path: '/register', element: <RegisterContainer /> },
       { path: '/recovery', element: <RecoveryContainer /> },
       { path: '/forgot-password', element: <ForgotPasswordContainer /> },
+      { path: '/auth', element: <AuthContainer /> },
       { path: '*', element: <NotFound /> },
     ]);
     return routes;

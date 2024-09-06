@@ -57,7 +57,12 @@ const Login = () => {
       console.error('Error en el login:', error);
     }
   };
-
+  const handleFacebookLogin = () => {
+    window.location.href = `${baseURL}/api/v1/auth/facebook`;
+  };
+  const handleGoogleLogin = () => {
+    window.location.href = `${baseURL}/api/v1/auth/google`;
+  };
   return (
     <div className="login-container">
       <div className="login-box">
@@ -96,10 +101,10 @@ const Login = () => {
         </div>
         <div className="divider">o</div>
         <div className="social-login">
-          <button className="facebook-button">
+          <button className="facebook-button" onClick={handleFacebookLogin}>
             <FaFacebookF className="icon" /> Continuar con Facebook
           </button>
-          <button className="google-button">
+          <button className="google-button" onClick={handleGoogleLogin}>
             <FaGoogle className="icon" /> Continuar con Google
           </button>
           <button className="apple-button">
